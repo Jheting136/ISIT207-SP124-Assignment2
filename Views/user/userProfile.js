@@ -1,4 +1,4 @@
-var token = 'gay';
+var token = sessionStorage.getItem("token");
 window.token = token;
 
  let users = [
@@ -22,24 +22,48 @@ window.token = token;
 
 
  function validateLogin() {
-    // Fetch values from the form
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    try{
+        // Fetch values from the form
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-    // Check if email and password match any user in the users array
-    const user = users.find(u => u.email === email && u.password === password);
+        // Check if email and password match any user in the users array
+        const user = users.find(u => u.email === email && u.password === password);
 
-    if (user) {
-      // Successful login
-      console.log("Login successful!");
-      var aToken = user.name;
-      token = aToken;
-
-    } else {
-      // Failed login
-      alert('Invalid email or password. Please try again.');
+        if (user) {
+            // Successful login
+            console.log("Login successful!");
+            sessionStorage.setItem("token", user.name);
+            token = sessionStorage.getItem("token");
+            console.log(sessionStorage.getItem("token"));
+        }
+        else {
+            // Failed login
+            alert('Invalid email or password. Please try again.');
+        }
     }
+    catch(error) {
+                 // Log any errors to the console
+                 console.error('An error occurred during login:', error);
+             }
+
   }
+
+  function updateNavLink() {
+          console.log("updating nav link")
+          console.log(Token)
+          const navLink = document.getElementById('loginLogoutLink');
+
+          if (Token != null) {
+          console.log("token not null")
+            navLink.innerHTML =
+              `<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>`;
+          } else {
+          console.log("token is null")
+            navLink.innerHTML =
+              `<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>`;
+          }
+        }
 
  function getReservations(name){
     const user = usersWithReservations.find(user => user.name === name);

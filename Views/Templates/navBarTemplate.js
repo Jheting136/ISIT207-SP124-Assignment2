@@ -1,6 +1,6 @@
 
 const navRoutes = window.routes;
-const Token = window.token;
+const Token = sessionStorage.getItem("token");
 console.log(navRoutes);
 console.log(Token);
 
@@ -28,21 +28,6 @@ function displayNav(data) {
             ul.appendChild(loginLi);
 
   }
-
-  function updateNavLink() {
-        console.log("updating nav link")
-        const navLink = document.getElementById('loginLogoutLink');
-
-        if (Token != null) {
-        console.log("token not null")
-          navLink.innerHTML =
-            `<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>`;
-        } else {
-        console.log("token is null")
-          navLink.innerHTML =
-            `<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>`;
-        }
-      }
 
 
   displayNav(navRoutes);
