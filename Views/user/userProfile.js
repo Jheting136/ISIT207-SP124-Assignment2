@@ -51,10 +51,10 @@ window.token = token;
 
   function updateNavLink() {
           console.log("updating nav link")
-          console.log(Token)
+          console.log(token)
           const navLink = document.getElementById('loginLogoutLink');
 
-          if (Token != null) {
+          if (token != null) {
           console.log("token not null")
             navLink.innerHTML =
               `<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>`;
