@@ -60,7 +60,7 @@ function displayNav(data) {
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             ${sessionStorage.getItem("token")} <i class="bi bi-person-fill"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
+                        <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../user/userProfile.html" >Profile</a></li>
                             <li><a class="dropdown-item" href="#" onclick="logOut()">Logout</a></li>
                         </ul>
