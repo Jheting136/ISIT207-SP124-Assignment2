@@ -41,6 +41,7 @@
     <script src="../user/userProfile.js"></script>
 
     <script defer src="../Templates/navBarTemplate.js"></script>
+    <script defer src="../Templates/LoginModal.js"></script>
 
 
 
@@ -49,41 +50,12 @@
 
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navBar">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">AZoom</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto" id="navBarUl">
-            </ul>
-        </div>
-    </div>
+<!--  navBar dynamically generated here  -->
 </nav>
 
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" name="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="validateLogin(); updateNavLink();">Login</button>
-                </form>
-            </div>
-        </div>
-    </div>
+
 </div>
 
 <div class="container text-center mt-5">

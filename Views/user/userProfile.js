@@ -49,21 +49,11 @@ window.token = token;
 
   }
 
-  function updateNavLink() {
-          console.log("updating nav link")
-          console.log(token)
-          const navLink = document.getElementById('loginLogoutLink');
-
-          if (token != null) {
-          console.log("token not null")
-            navLink.innerHTML =
-              `<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>`;
-          } else {
-          console.log("token is null")
-            navLink.innerHTML =
-              `<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>`;
-          }
-        }
+function logOut(){
+    sessionStorage.removeItem("token");
+    console.log(sessionStorage.getItem("token"));
+    updateNavLink();
+}
 
  function getReservations(name){
     const user = usersWithReservations.find(user => user.name === name);
