@@ -58,7 +58,7 @@ console.log(token);
 
 function logOut(){
     sessionStorage.removeItem("token");
-    window.location.href = '../Home/Home.html'
+    window.location.href = '../Home/Home.html';
     console.log(sessionStorage.getItem("token"));
     updateNavLink();
 
