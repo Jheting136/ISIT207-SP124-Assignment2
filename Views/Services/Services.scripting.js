@@ -17,7 +17,7 @@ const dataArray = [
         const gridItem = document.createElement('div');
         gridItem.classList.add('col-md-4', 'mb-4');
         gridItem.innerHTML = `
-        <div class="card">
+        <div class="card" onclick="" >
             <div class="card-body">
                 <h3 class="card-title">${item.header}</h3>
                 <p>${item.p1}</p>

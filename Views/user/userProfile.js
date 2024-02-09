@@ -1,5 +1,9 @@
 var token = sessionStorage.getItem("token");
-window.token = token;
+console.log(token);
+
+
+
+// let greetings = {"Welcome back","Hello",""};
 
  let users = [
      { id: 1,name: 'Sarah Loh', age: 23, email: 'Sarah@mail.com', password: 'Secret@789' },
@@ -35,7 +39,10 @@ window.token = token;
             console.log("Login successful!");
             sessionStorage.setItem("token", user.name);
             token = sessionStorage.getItem("token");
+            displayUserName(token);
+
             console.log(sessionStorage.getItem("token"));
+            console.log(token);
         }
         else {
             // Failed login
@@ -51,8 +58,10 @@ window.token = token;
 
 function logOut(){
     sessionStorage.removeItem("token");
+    window.location.href = '../Home/Home.html'
     console.log(sessionStorage.getItem("token"));
     updateNavLink();
+
 }
 
  function getReservations(name){
@@ -60,9 +69,24 @@ function logOut(){
 
     if (user) {
         console.log(user.reservations);
+
     }
     else {
         console.log(`'${name}' not found.`);
         //return [];
     }
  }
+
+ function displayUserName(){
+    if(sessionStorage.getItem("token")){
+        document.getElementById('userName').innerHTML = sessionStorage.getItem("token");
+        console.log(sessionStorage.getItem("token"));
+    }
+    else{
+    console.log("session storage is empty");
+    }
+ }
+
+setTimeout(() => {
+    displayUserName();
+}, 10);

@@ -1,7 +1,7 @@
 
 const navRoutes = window.routes;
-const Token = sessionStorage.getItem("token");
-console.log(navRoutes);
+const Token = sessionStorage.getItem("persistedHTML");
+//console.log(navRoutes);
 console.log(Token);
 
 function displayNav(data) {
@@ -49,7 +49,6 @@ function displayNav(data) {
 
   function updateNavLink() {
             console.log("updating nav link")
-            console.log(token)
             const navLink = document.getElementById('loginLogoutLink');
             navLink.classList.add('dropdown');
             if (sessionStorage.getItem("token") != null) {
