@@ -1,7 +1,7 @@
 // navbarLinks.js
 
 const homeLink = { text: "Home", url: "../Home/Home.html" };
-const servicesLink = { text: "Services", url: "../Services/Services.html" };
+const servicesLink = { text: "Browse All Cars", url: "../Products/Products.html" };
 const contactLink = { text: "Contact Us", url: "/contact" };
 
 const routes = [ homeLink, servicesLink, contactLink ];
