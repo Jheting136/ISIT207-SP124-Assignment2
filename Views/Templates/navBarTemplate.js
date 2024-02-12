@@ -61,7 +61,7 @@ function displayNav(data) {
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../user/userProfile.html" >Profile</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="logOut()">Logout</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="logOut(); updateReserveBtn();">Logout</a></li>
                         </ul>
                     `;
             } else {

@@ -30,6 +30,8 @@ console.log(token);
         // Fetch values from the form
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
+        console.log(email)
+        console.log(password    )
 
         // Check if email and password match any user in the users array
         const user = users.find(u => u.email === email && u.password === password);
