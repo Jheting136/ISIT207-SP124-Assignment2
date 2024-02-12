@@ -1,5 +1,11 @@
+const loginModal = document.getElementById('loginModal');
+
+function closeLoginModal(){
+    loginModal.hide;
+}
+
 function displayLoginModal() {
-    const loginModal = document.getElementById('loginModal');
+
 
     loginModal.innerHTML = `
         <div class="modal-dialog">
@@ -19,7 +25,7 @@ function displayLoginModal() {
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" name="password">
                             </div>
-                            <button class="btn btn-primary" onclick="validateLogin(); updateNavLink(); return false;">Login</button>
+                            <button class="btn btn-primary" onclick="validateLogin(); updateNavLink(); updateReserveBtn(); closeLoginModal(); return false;">Login</button>
                         </form>
                     </div>
                 </div>

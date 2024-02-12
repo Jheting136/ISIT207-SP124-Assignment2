@@ -5,8 +5,8 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 function getProdInfo(){
 
     // Get the value of 'searchParam' or a default value if not present
-    const searchParamValue = urlSearchParams.get('prodInfo') || 'default';
-    const decodedSearchParamValue = JSON.parse(searchParamValue);
+    const searchParamValue = urlSearchParams.get('prodID');
+    const decodedSearchParamValue = getProdById(searchParamValue);
     // Use the searchParamValue as needed
     return decodedSearchParamValue;
     console.log(decodedSearchParamValue);
@@ -17,7 +17,7 @@ function getProdInfo(){
 function displayProduct(){
 
     const prodInfoElement = document.getElementById('prodInfo');
-    const carInfo = getProdInfo();
+    const carInfo = getProdInfo(String(urlSearchParams.get('prodID')));
     //console.log(prodInfo);
     images = carInfo.img;
     details = carInfo.details;
@@ -62,8 +62,8 @@ function displayProduct(){
                 <div class="card-body">
                   <h3 class="card-title">${carInfo.long}</h3>
                   <p></p>
-                  <h5 class="card-text">${carInfo.price}</h5>
-                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#checkoutModal">Reserve Now</button>
+                  <h5 class="card-text">$${carInfo.price}</h5>
+                  <button class="btn btn-primary" id="reserveBtn" data-bs-toggle="modal" data-bs-target="#loginModal">Reserve Now</button>
                 </div>
               </div>
             </div>
@@ -76,15 +76,36 @@ function displayProduct(){
         if (details.hasOwnProperty(key)) {
             var gridItem = document.createElement('div');
             gridItem.classList.add('grid-item');
-            gridItem.textContent = key + ': ' + details[key];
+            var keyElement = document.createElement('div');
+            keyElement.classList.add('key');
+            keyElement.textContent = key;
+
+            var detailsElement = document.createElement('h5');
+            detailsElement.classList.add('details');
+            detailsElement.textContent = details[key];
+
+            gridItem.appendChild(keyElement);
+            gridItem.appendChild(detailsElement);
+
             gridContainer.appendChild(gridItem);
         }
     }
 
 
+
+
 }
 
+function updateReserveBtn(){
 
+    const reserveBtn = document.getElementById("reserveBtn");
+    if(sessionStorage.getItem("token")){
+        reserveBtn.setAttribute("data-bs-target", "#checkoutModal");
+    } else {
+        reserveBtn.setAttribute("data-bs-target", "#loginModal");
+    };
+
+}
 
 
 //setTimeout(() => {
@@ -94,4 +115,5 @@ function displayProduct(){
 
 setTimeout(() => {
     displayProduct();
+    updateReserveBtn();
 }, 1);

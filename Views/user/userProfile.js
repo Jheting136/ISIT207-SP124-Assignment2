@@ -13,8 +13,8 @@ console.log(token);
 
  let reservations = [
       { id: 1, name: 'Sarah Loh',
-        res: [{ car: 'Toyota Camry', startDate: '2023-12-01', endDate: '2023-12-05', payment: 'y' },
-               { car: 'Honda Civic', startDate: '2024-03-10', endDate: '2024-03-15', payment: 'n' },] ,
+        res: [{ id: '1', startDate: '2023-12-01', endDate: '2023-12-05', payment: 'y' },
+              { id: '2', startDate: '2024-03-10', endDate: '2024-03-15', payment: 'n' },] ,
       },
       { id: 2, name: 'Jane Doe',
         res: [],
@@ -30,6 +30,8 @@ console.log(token);
         // Fetch values from the form
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
+        console.log(email)
+        console.log(password    )
 
         // Check if email and password match any user in the users array
         const user = users.find(u => u.email === email && u.password === password);
@@ -64,11 +66,40 @@ function logOut(){
 
 }
 
- function getReservations(name){
-    const user = usersWithReservations.find(user => user.name === name);
-
+ function getReservations(){
+    const user = reservations.find(u => u.name === sessionStorage.getItem("token"));
     if (user) {
-        console.log(user.reservations);
+
+        const idArray = user.res.map(u => u.id);
+        console.log(idArray);
+
+        idArray.forEach(function(id) {
+            const car = getProdById(id);
+
+            const reservationsDiv = document.getElementById('reservations');
+            const reservationCard = document.createElement('div');
+            reservationCard.classList.add('reservationCard');
+
+            reservationCard.innerHTML=
+            `
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="${car.img[0]}" style="height: 30vh; width: 10vw;" class="d-block w-100" alt="Car Image">
+
+                            <div id="carDetailsGrid" class="grid-container">
+                                <h5 class="card-title"><b>${car.long}</b></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            reservationsDiv.appendChild(reservationCard);
+
+        });
+
+
 
     }
     else {
@@ -89,4 +120,5 @@ function logOut(){
 
 setTimeout(() => {
     displayUserName();
+    getReservations();
 }, 10);
