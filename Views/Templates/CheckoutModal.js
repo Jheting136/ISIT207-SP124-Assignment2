@@ -1,3 +1,5 @@
+const locations = [];
+
 function displayCheckoutModal() {
     const checkoutModal = document.getElementById('checkoutModal');
 

@@ -84,6 +84,8 @@ function displayProduct(){
 
 }
 
+function addNewRental(){
+}
 
 
 
