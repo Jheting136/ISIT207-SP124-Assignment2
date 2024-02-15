@@ -17,6 +17,24 @@
             color: #ffffff;
             text-align: center;
         }
+        .txtCntrWhite{
+            color: #ffffff;
+            text-align: center;
+        }
+        .txtCntrBlack{
+            color: black;
+            text-align: center;
+        }
+        #content{
+            display: flex;
+            justify-content: center;
+        }
+        #smHeader{
+            margin: 4vh 5vw;
+        }
+        #reservations{
+            margin: 4vh 5vw;
+        }
         .contrast{
             display: flex;
             justify-content: center;
@@ -59,13 +77,23 @@
 
 </div>
 
-<div>
-    <div>
-        <h2>Welcome back, <b id="userName"></b></h2>
+<!-- hero div -->
+<div class="jumbotron homeSplash">
+    <div class="contrast">
+        <div class="txtCntrWhite">
+            <h2>Welcome back, <b id="userName"></b></h2>
+        </div>
     </div>
-    <div>
-        <h4>Your Reservations</h4>
-    </div>
+</div>
+
+<div id="smHeader" class="txtCntrBlack">
+    <h4>Manage Your Reservations</h4>
+</div>
+
+<div id="content">
+
+
+
     <div id="reservations">
 
     </div>

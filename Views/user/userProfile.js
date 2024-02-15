@@ -82,17 +82,28 @@ function logOut(){
 
             reservationCard.innerHTML=
             `
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="${car.img[0]}" style="height: 30vh; width: 10vw;" class="d-block w-100" alt="Car Image">
 
-                            <div id="carDetailsGrid" class="grid-container">
-                                <h5 class="card-title"><b>${car.long}</b></h5>
-                            </div>
-                        </div>
+                <div class="container mt-4">
+                  <div class="card">
+                    <div class="card-header">
+                      ${car.long}
                     </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <!-- First Column -->
+                        <div class="col-md-6">
+                            <img src="${car.img[0]}" style="height: 30vh; width: relative;" class="img-fluid w-100 h-100" alt="Car Image">
+                        </div>
+                        <!-- Second Column -->
+                        <div class="col-md-6">
+                          <h5 class="card-title">Column 2</h5>
+                          <p class="card-text">Content for the second column goes here.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
             `;
 
             reservationsDiv.appendChild(reservationCard);
