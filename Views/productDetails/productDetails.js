@@ -1,12 +1,13 @@
 
 
 const urlSearchParams = new URLSearchParams(window.location.search);
+const prodID = urlSearchParams.get('prodID');
 
 function getProdInfo(){
 
     // Get the value of 'searchParam' or a default value if not present
-    const searchParamValue = urlSearchParams.get('prodID');
-    const decodedSearchParamValue = getProdById(searchParamValue);
+    console.log(prodID);
+    const decodedSearchParamValue = getProdById(prodID);
     // Use the searchParamValue as needed
     return decodedSearchParamValue;
     console.log(decodedSearchParamValue);
@@ -17,8 +18,8 @@ function getProdInfo(){
 function displayProduct(){
 
     const prodInfoElement = document.getElementById('prodInfo');
-    const carInfo = getProdInfo(String(urlSearchParams.get('prodID')));
-    //console.log(prodInfo);
+    const carInfo = getProdById(prodID);
+    console.log(carInfo);
     images = carInfo.img;
     details = carInfo.details;
     console.log(images[0]);

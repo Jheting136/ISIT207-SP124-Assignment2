@@ -6,22 +6,20 @@ console.log(token);
 // let greetings = {"Welcome back","Hello",""};
 
  let users = [
-     { id: 1,name: 'Sarah Loh', age: 23, email: 'Sarah@mail.com', password: 'Secret@789' },
-     { id: 2, name: 'Jane Doe', age: 30, email: 'jane@mail.com', password: 'securepass456' },
-     { id: 3, name: 'John Wick', age: 25, email: 'john@mail.com', password: 'Pass@123' },
+     { id: 1, role: 'member', name: 'Sarah', lastName: 'Loh', age: 23, email: 'Sarah@mail.com', password: 'Secret@789', billing: { NOC: 'Sarah Loh', cardNo: 'xxxx-xxxx-xxxx-4444', exp: '2025-12', country: 'Singapore', address: 'somewhere somestreet 31', postalCode: 123456,  cvv: 121}},
+     { id: 2, role: 'su', name: 'Superuser', lastName: '', age: 100, email: 'su@mail.com', password: 'Pass@123' },
+
    ];
 
  let reservations = [
-      { id: 1, name: 'Sarah Loh',
-        res: [{ id: '1', startDate: '2023-12-01', endDate: '2023-12-05', payment: 'y' },
-              { id: '2', startDate: '2024-03-10', endDate: '2024-03-15', payment: 'n' },] ,
+      { id: 1,
+        res: [{ carId: 1, startDate: '2023-12-01', endDate: '2023-12-05', location:'Marina Bay Sands', payment: 'y' },
+              { carId: 2, startDate: '2024-03-10', endDate: '2024-03-15', location:'Marina Bay Sands', payment: 'n' },] ,
       },
-      { id: 2, name: 'Jane Doe',
+      { id: 2,
         res: [],
       },
-      { id: 3, name: 'John Wick',
-        res: [],
-      },
+
     ];
 
 
@@ -30,21 +28,29 @@ console.log(token);
         // Fetch values from the form
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        console.log(email)
-        console.log(password    )
+        console.log(email);
+        console.log(password);
 
         // Check if email and password match any user in the users array
         const user = users.find(u => u.email === email && u.password === password);
 
         if (user) {
             // Successful login
-            console.log("Login successful!");
-            sessionStorage.setItem("token", user.name);
-            token = sessionStorage.getItem("token");
-            displayUserName(token);
+            if (user.role === 'su'){
+                sessionStorage.setItem("name", user.name);
+                sessionStorage.setItem("token", user.id);
+                window.location.href = "../admin/admin.html";
+                console.log("su login")
+            }
+            else if (user.role === "member") {
+                sessionStorage.setItem("name", user.name);
+                sessionStorage.setItem("token", user.id);
+                token = sessionStorage.getItem("token");
+                displayUserName();
 
-            console.log(sessionStorage.getItem("token"));
-            console.log(token);
+                console.log(sessionStorage.getItem("token"));
+                console.log(token);
+            }
         }
         else {
             // Failed login
@@ -66,24 +72,30 @@ function logOut(){
 
 }
 
- function getReservations(){
-    const user = reservations.find(u => u.name === sessionStorage.getItem("token"));
+ function displayUserProfile(){
+    const user = reservations.find(u => u.id === parseInt(sessionStorage.getItem("token")));
+    const billing = users.find(u => u.id === parseInt(sessionStorage.getItem("token")));
+    console.log(billing.billing);
     if (user) {
 
-        const idArray = user.res.map(u => u.id);
+        const idArray = user.res.map(u => u.carId);
         console.log(idArray);
 
-        idArray.forEach(function(id) {
-            const car = getProdById(id);
+        const reservationsDiv = document.getElementById('reservations');
 
-            const reservationsDiv = document.getElementById('reservations');
+        idArray.forEach(function(id) {
+            console.log(id)
+            const car = getProdById(id);
+            console.log(car);
+
+
             const reservationCard = document.createElement('div');
             reservationCard.classList.add('reservationCard');
 
             reservationCard.innerHTML=
             `
 
-                <div class="container mt-4">
+                <div class="reservationCard">
                   <div class="card">
                     <div class="card-header">
                       ${car.long}
@@ -96,13 +108,15 @@ function logOut(){
                         </div>
                         <!-- Second Column -->
                         <div class="col-md-6">
-                          <h5 class="card-title">Column 2</h5>
-                          <p class="card-text">Content for the second column goes here.</p>
+                            <h6 class="card-title">Payment Due: ${car.price}</h6>
+                            <h6 class="card-title">Collection and return location: ${user.res[0].location}</h6  >
+                            <h6 class="card-title">Collection Date: ${user.res[0].startDate}</h6>
+                            <h6 class="card-title">Return Date: ${user.res[0].endDate}</h6>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </div>.
 
             `;
 
@@ -117,11 +131,69 @@ function logOut(){
         console.log(`'${name}' not found.`);
         //return [];
     }
+    if (billing) {
+
+        const tabContent = document.getElementById('billing');
+        tabContent.innerHTML = `
+            <h5>Card Info</h5>
+            <p>Card Number: ${billing.billing.cardNo}</p>
+            <p>Name On Card: ${billing.billing.NOC}</p>
+            <p>Expiry Date: ${billing.billing.exp}</p>
+            <h5>Billing Address</h5>
+            <p>Billing Address: ${billing.billing.country}, ${billing.billing.address}</p>
+            <p>Postal Code: ${billing.billing.postalCode}</p>
+        `;
+    }
+ }
+
+ function addReservation(carId){
+ console.log(carId);
+    try{
+        const user = users.find(u => u.id === parseInt(sessionStorage.getItem("token")));
+        console.log(user);
+        const cvv = parseInt(document.getElementById('cvv').value);
+        if (cvv === user.billing.cvv){
+
+            const location = document.getElementById('location').value;
+            const startDate = document.getElementById('pickUpDate').value;
+            const endDate = document.getElementById('returnDate').value;
+            console.log(location);
+            console.log(pickUpDate);
+            console.log(returnDate);
+            console.log(cvv);
+            const payment = 'n';
+
+            const reservation = reservations.find(res => res.id === parseInt(sessionStorage.getItem("token")));
+            console.log(reservation);
+
+            // Add the submitted data to the 'res' property of the reservation
+            const newRes = { carId, startDate, endDate, location, payment };
+            reservation.res.push({
+                carId: parseInt(carId),
+                pickUpDate,
+                returnDate,
+                location,
+                payment
+            });
+
+            console.log(reservation.res);
+
+            window.location.href = `../thanks.html  `;
+
+        }
+
+    }
+    catch(error) {
+        console.error('An error occurred during add:', error);
+    }
+
  }
 
  function displayUserName(){
     if(sessionStorage.getItem("token")){
-        document.getElementById('userName').innerHTML = sessionStorage.getItem("token");
+        const user = users.find(u => u.id === parseInt(sessionStorage.getItem("token")));
+        console.log(user);
+        document.getElementById('userName').innerHTML = user.name;
         console.log(sessionStorage.getItem("token"));
     }
     else{
@@ -131,5 +203,5 @@ function logOut(){
 
 setTimeout(() => {
     displayUserName();
-    getReservations();
-}, 10);
+    displayUserProfile();
+}, 1);

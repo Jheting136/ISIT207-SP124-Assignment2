@@ -57,7 +57,7 @@ function displayNav(data) {
                 navLink.innerHTML =
                     `
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            ${sessionStorage.getItem("token")} <i class="bi bi-person-fill"></i>
+                            ${sessionStorage.getItem("name")} <i class="bi bi-person-fill"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../user/userProfile.html" >Profile</a></li>

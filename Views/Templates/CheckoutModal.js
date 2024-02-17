@@ -1,5 +1,7 @@
 const locations = ["Marina Bay Sands", "Gardens by the Bay", "Sentosa Island", "Chinatown", "Little India"];
 
+
+
 function displayCheckoutModal() {
     const checkoutModal = document.getElementById('checkoutModal');
 
@@ -14,37 +16,43 @@ function displayCheckoutModal() {
                         <!-- Add your login form or content here -->
                         <form>
                             <div class="mb-3">
-                                <label for="locationDropdown" class="form-label">Choose your pickup location</label>
-                                <select id="locationDropdown" class="form-control"></select>
+                                <label for="location" class="form-label">Choose your pickup and return location</label>
+                                <select id="location" class="form-control"></select>
+                            </div>
+
+                            <div class="mb-3">
+                                <div id="carDetailsGrid" class="grid-container">
+                                    <div class="grid-item-checkout">
+                                        <label for="email" class="form-label">Collection Date</label>
+                                        <input type="date" id="pickUpDate" class="form-control" placeholder="Select Date">
+                                    </div>
+                                    <div class="grid-item-checkout">
+                                        <label for="email" class="form-label">Return Date</label>
+                                        <input type="date" id="returnDate" class="form-control" placeholder="Select Date">
+                                    </div>
+                                </div>
                             </div>
                             <div class="mb-3">
-                            <div id="carDetailsGrid" class="grid-container">
-                                <div class="grid-item-checkout">
-                                    <label for="email" class="form-label">Collection Date</label>
-                                    <input type="date" id="datepicker" class="form-control" placeholder="Select Date">
-                                </div>
-                                <div class="grid-item-checkout">
-                                <label for="email" class="form-label">Return Date</label>
-                                    <input type="date" id="datepicker" class="form-control" placeholder="Select Date">
-                                </div>
+                                <label for="cvv" class="form-label">Enter your CVV number </label>
+                                <input type="text" class="form-control" id="cvv" placeholder="CVV">
                             </div>
-                            </div>
-                            <button class="btn btn-primary" onclick="validateLogin(); updateNavLink(); return false;">Reserve</button>
+                            <button class="btn btn-primary" onclick="addReservation(prodID);  return false;">Reserve</button>
                         </form>
                     </div>
                 </div>
             </div>
     `;
 
-    var locationDropdown = document.getElementById("locationDropdown");
+    var locationPicker = document.getElementById("location");
 
     // Populate the dropdown with options from the locations array
     locations.forEach(function(location) {
-        var option = document.createElement("option");
-        option.value = location;
-        option.text = location;
-        locationDropdown.appendChild(option);
+        var locationOptions = document.createElement("option");
+        locationOptions.value = location;
+        locationOptions.text = location;
+        locationPicker.appendChild(locationOptions);
     });
+
 
   }
 
