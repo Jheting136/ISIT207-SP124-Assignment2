@@ -18,16 +18,16 @@ function displayLoginModal() {
                         <!-- Add your login form or content here -->
                         <form>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="email" name="username">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" name="Email">
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" name="password">
                             </div>
                             <div  class="grid-container">
-                                <div class="grid-item"><button type="button" class="btn btn-primary" onclick="validateLogin(); updateNavLink(); updateReserveBtn(); closeLoginModal(); return false;">Login</button></div>
-                                <div class="grid-item" style="display: flex; justify-content: flex-end;"><a href="#" class="nav-link"><small data-bs-toggle="modal" data-bs-target="#createAcc" style="color:grey">I dont have an account</small></a></div>
+                                <div class="grid-item" class="btn-close" data-bs-dismiss="modal"><button type="button" class="btn btn-primary" onclick="validateLogin(); updateNavLink(); updateReserveBtn(); closeLoginModal(); return false;">Login</button></div>
+                                <div class="grid-item" style="display: flex; justify-content: flex-end;"><a href="#" class="nav-link"><small data-bs-toggle="modal" data-bs-target="#createAccModal" style="color:grey">I dont have an account</small></a></div>
                             </div>
 
                         </form>
