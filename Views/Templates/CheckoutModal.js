@@ -43,6 +43,11 @@ function displayCheckoutModal() {
             </div>
     `;
 
+    const minDate = new Date();
+    minDate.setDate(minDate.getDate() + 1);
+    document.getElementById('pickUpDate').min = minDate.toISOString().split('T')[0];
+    document.getElementById('returnDate').min = minDate.toISOString().split('T')[0];
+
     var locationPicker = document.getElementById("location");
 
     // Populate the dropdown with options from the locations array
