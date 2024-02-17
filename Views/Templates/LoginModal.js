@@ -25,7 +25,11 @@ function displayLoginModal() {
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" name="password">
                             </div>
-                            <button type="button" class="btn btn-primary" onclick="validateLogin(); updateNavLink(); updateReserveBtn(); closeLoginModal(); return false;">Login</button>
+                            <div  class="grid-container">
+                                <div class="grid-item"><button type="button" class="btn btn-primary" onclick="validateLogin(); updateNavLink(); updateReserveBtn(); closeLoginModal(); return false;">Login</button></div>
+                                <div class="grid-item" style="display: flex; justify-content: flex-end;"><a href="#" class="nav-link"><small data-bs-toggle="modal" data-bs-target="#createAcc" style="color:grey">I dont have an account</small></a></div>
+                            </div>
+
                         </form>
                     </div>
                 </div>
