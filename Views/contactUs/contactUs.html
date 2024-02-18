@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Azoom</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../commonStyling.css">
+    <style>
+
+        #whychooseUs{
+            padding: 20px 0;
+            text-align: center;
+        }
+        #pitchReveal{
+            width: 5vw;
+        }
+        #carouselItem1{
+            height: 70vh;
+            background-image: url('https://plus.unsplash.com/premium_photo-1664301939396-90cfdcfee181?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNhciUyMHJlbnRhbHxlbnwwfHwwfHx8MA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        #carouselItem2{
+            height: 70vh;
+            background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNpbXBsZSUyMGNhciUyMHJlbnRhbCUyMGltYWdlfGVufDB8fDB8fHww');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        #carouselItem3{
+            height: 70vh;
+            background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNpbXBsZSUyMGNhciUyMHJlbnRhbCUyMGltYWdlfGVufDB8fDB8fHww');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        #accordionContent{
+            height: 50vh;
+            width: 90vw;
+        }
+        .carousel-caption {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #101621;
+            opacity: 0.8;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            color: white;
+        }
+        #map {
+            height: 400px;  /* Adjust the height as needed */
+            width: 100%;    /* Make the map fill its container */
+        }
+        #contactUs{
+            padding-bottom:2vh;
+        }
+        .nav-link{
+            display: flex;
+            justify-content:center;
+        }
+
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE"></script>
+    <script src="../../CommonUtil.js"></script>
+    <script defer type="module" src="../../Routes.js"></script>
+    <script defer type="module" src="../user/userProfile.js"></script>
+    <script defer src="../Templates/navBarTemplate.js"></script>
+    <script defer src="../Templates/LoginModal.js"></script>
+    <script defer src="../Templates/createAccountModal.js"></script>
+    <script src="../user/userProfile.js"></script>
+    <script src="contactUs.js"></script>
+
+</head>
+<body>
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navBar">
+    <!--  navBar dynamically generated here  -->
+</nav>
+
+<!--Login modal-->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+
+</div>
+
+<div class="modal fade" id="createAccModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+
+</div>
+
+<div class="container text-center mt-5">
+    <h1>Find our main office here</h1>
+    <i class="bi bi-chevron-compact-down fs-1 "></i>
+</div>
+
+<div id="map"></div>
+
+<div class="container text-center mt-5">
+    <h1>Or contact us through other means</h1>
+    <i class="bi bi-chevron-compact-down fs-1 "></i>
+</div>
+
+<div class="grid-container" id="contactUs">
+    <a href="https://web.telegram.org/#/im?p=@YourTelegramUsername" target="_blank" class="nav-link"><h5>Telegram Us<i class="bi bi-telegram"></i></h5></a>
+    <a href="mailto:contact@example.com" class="nav-link"><h5>Email Us<i class="bi bi-envelope"></i></h5></a>
+</div>
+
+<script src="../Products/Products.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 const homeLink = { text: "Home", url: "../Home/Home.html" };
 const servicesLink = { text: "Browse All Cars", url: "../Products/Products.html" };
-const contactLink = { text: "Contact Us", url: "/contact" };
+const contactLink = { text: "Contact Us", url: "../contactUs/contactUs.html" };
 
 const routes = [ homeLink, servicesLink, contactLink ];
 window.routes = routes;

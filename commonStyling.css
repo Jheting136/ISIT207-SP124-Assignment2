@@ -4,12 +4,24 @@
             background-size: cover;
             background-position: center;
         }
+        .heroTxtCntr{
+                    color: #ffffff;
+                    text-align: center;
+                }
         .txtWhite{
             color: #ffffff;
         }
         .txtCntrWhite{
             color: #ffffff;
             text-align: center;
+        }
+        .txtCntrBlack{
+            color: black;
+            text-align: center;
+        }
+        #content{
+            display: flex;
+            justify-content: center;
         }
         .contrast{
             display: flex;
@@ -48,3 +60,10 @@
             justify-content: center;
             align-items: center;
         }
+        .nav-link{
+                    color: grey;
+                }
+                .nav-link:hover{
+                    color: black;
+
+                }
